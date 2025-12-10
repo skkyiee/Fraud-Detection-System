@@ -10,7 +10,7 @@ ML training is _not_ part of the runtime — the system loads a **pretrained Iso
 
 ---
 
-## ✨ Features
+## Features
 
 ### ✔ Event-Driven Microservices
 
@@ -40,45 +40,33 @@ ML training is _not_ part of the runtime — the system loads a **pretrained Iso
 
 ---
 
-## 📂 Project Structure
+## 🚀 How to Run the Project
 
-EVENT DRIVEN FAULT DETECTION
-│
-├── configs/
-│ ├── consumer.properties
-│ ├── producer.properties
-│ └── server.properties
-│
-├── consumers/
-│ ├── fraud_detection_consumer_ml.py
-│ ├── fraud_detection_consumer.py
-│ └── notification_consumer.py
-│
-├── models/
-│ ├── iforest_pipeline.joblib
-│ └── iforest.joblib
-│
-├── notebooks/
-│ ├── isolation_forest.py
-│ └── kafka_fraud_detection.py
-│
-├── producers/
-│ ├── transaction_producer.py
-│ └── user_profile_producer.py
-│
-├── resources/
-│ └── kafka_best_practices.md
-│
-├── schema_registry/
-│ ├── register_schema.sh
-│ └── transaction_schema.avsc
-│
-├── stream_processing/
-│ ├── kafka_stream_processing.py
-│ └── ksql_queries.sql
-│
-├── docker-compose.yml
-└── README.md
+Follow these steps to start the complete real-time fraud detection pipeline.
+
+#### Start Kafka, Zookeeper, and MongoDB (Docker)
+
+- docker-compose up -d
+
+#### Start the ML Fraud Detection Consumer
+
+- python consumers/fraud_detection_consumer_ml.py
+
+#### Start the Notification Consumer
+
+- python consumers/notification_consumer.py
+
+#### Start the Transaction Producer
+
+- python producers/transaction_producer.py
+
+#### You should now see:
+
+- Transactions being streamed
+- ML consumer scoring them
+- Alerts being published
+- Notifications printed
+- Alerts stored in MongoDB
 
 ---
 
